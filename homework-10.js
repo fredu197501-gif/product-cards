@@ -1,28 +1,15 @@
 import { catalog } from "./products.js";
 
-// №3 Создал шаблон для продуктовых карточек.
 const catalogTemplate = document.getElementById("catalog-template");
 const catalogList = document.getElementById("catalog-list");
 
-catalog.forEach(catalog => {
-  const catalogClone = catalogTemplate.content.cloneNode(true);
-  catalogClone.querySelector(".catalog-name").textContent = catalog.name;
-  catalogClone.querySelector(".catalog-subtitle").textContent = catalog.subtitle;
-  catalogClone.querySelector(".catalog-description").textContent = catalog.description;
-  catalogClone.querySelector(".catalog-price").textContent = `${catalog.price.toLocaleString()} \u20AC`;
-  catalogClone.querySelector(".catalog-image").src = `./images/${catalog.image}.jpg`;
-  catalogClone.querySelector(".catalog-composition").textContent = catalog.composition.join(", ");
-  catalogList.appendChild(catalogClone);
-});
-
-console.log(catalogList);
-
 //№4 Используя метод .reduce(), получаем массив объектов, где ключём является название продукта, а значением - его описание
-const catalogDescriptions = catalog.reduce((acc, catalog) => {
-  acc[catalog.name] = catalog.description;
+const catalogDescriptions = catalog.reduce((acc, product) => {
+  acc[product.name] = product.description;
   return acc;
 }, {});
 
+// №3 Создал шаблон для продуктовых карточек.
 // №5 Функция, которая при запуске страницы выводит сообщение через функцию prompt "Сколько карточек отобразить?
 // Используем 2 функции, одна возвращает количество карточек,другая - рендерить эти карточки.
 function getCountFromUser() {
@@ -45,8 +32,8 @@ function renderCards(arrayToRender) {
     catalogClone.querySelector(".catalog-name").textContent = catalog.name;
     catalogClone.querySelector(".catalog-subtitle").textContent = catalog.subtitle;
     catalogClone.querySelector(".catalog-description").textContent = catalog.description;
-    catalogClone.querySelector(".catalog-price").textContent = `${catalog.price.toLocaleString()} \u20AC`;
-    catalogClone.querySelector(".catalog-composition").textContent = catalog.composition.join(", ");
+    catalogClone.querySelector(".catalog-composition .composition__value").textContent = catalog.composition.join(", ");
+    catalogClone.querySelector(".catalog-price .price-box__value").textContent = catalog.price.toLocaleString();
     catalogList.appendChild(catalogClone);
   });
 }
@@ -55,3 +42,5 @@ const cardsCount = getCountFromUser();
 
 const filteredCatalog = catalog.slice(0, cardsCount);
 renderCards(filteredCatalog);
+
+console.log(catalogList);
