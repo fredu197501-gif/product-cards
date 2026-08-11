@@ -7,7 +7,7 @@ const catalogList = document.getElementById("catalog-list");
 const catalogDescriptions = catalog.reduce((acc, product) => {
   acc[product.name] = product.description;
   return acc;
-}, {});
+}, []);
 
 // №3 Создал шаблон для продуктовых карточек.
 // №5 Функция, которая при запуске страницы выводит сообщение через функцию prompt "Сколько карточек отобразить?
@@ -33,7 +33,7 @@ function renderCards(arrayToRender) {
     catalogClone.querySelector(".catalog-subtitle").textContent = catalog.subtitle;
     catalogClone.querySelector(".catalog-description").textContent = catalog.description;
     catalogClone.querySelector(".catalog-composition .composition__value").textContent = catalog.composition.join(", ");
-    catalogClone.querySelector(".catalog-price .price-box__value").textContent = catalog.price.toLocaleString();
+    catalogClone.querySelector(".catalog-price").textContent = `Цена: ${catalog.price.toLocaleString("ru-RU")} ₽`;
     catalogList.appendChild(catalogClone);
   });
 }
