@@ -5,9 +5,11 @@ const catalogList = document.getElementById("catalog-list");
 
 //№4 Используя метод .reduce(), получаем массив объектов, где ключём является название продукта, а значением - его описание
 const catalogDescriptions = catalog.reduce((acc, product) => {
-  acc[product.name] = product.description;
+  acc.push({
+    [product.name]: product.description
+  });
   return acc;
-}, {});
+}, []);
 
 // №3 Создал шаблон для продуктовых карточек.
 // №5 Функция, которая при запуске страницы выводит сообщение через функцию prompt "Сколько карточек отобразить?
