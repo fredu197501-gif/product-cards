@@ -542,3 +542,23 @@ body {
   top: 1550px;
   left: 687;
 }
+
+#catalog-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.catalog-container {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #515076;
+  padding: 15px;
+}
+.catalog-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
