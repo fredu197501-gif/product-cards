@@ -13,140 +13,88 @@
 
 <body>
   <div class="layout">
-    <button id="change-all-card-color">Сменить цвет карточек</button>
-    <button id="change-first-card-color">Сменить цвет карточки-1</button>
-    <button id="open-google">Открыть страницу Google.com</button>
-    <button id="output-console-log">Вывести сообщение в консоль лог</button>
-    <button id="toggle-color-button" class="button-toggle">Переключить цвет</button>
+    <div class="buttons-container">
+      <button id="change-all-card-color">Сменить цвет карточек</button>
+      <button id="change-first-card-color">Сменить цвет карточки-1</button>
+      <button id="open-google">Открыть страницу Google.com</button>
+      <button id="output-console-log">Вывести сообщение в консоль лог</button>
+      <button id="toggle-color-button" class="button-toggle">Переключить цвет</button>
+    </div>
 
-    <h1 class="layout__title">Выбери свой продукт</h1>
+    <h1 class="catalog-title">Выбери свой продукт</h1>
 
-    <div class="layout__product-card">
+    <ul id="catalog-list">
 
-      <div class="card card_1">
-        <img class="card__image" src="images/moisturizing-mousse.jpg" alt="товар увлажняющий мусс" />
-        <h3 class="card__subtitle">для нормальной кожи</h3>
-        <h2 class="card__title">Увлажняющий мусс</h2>
-        <p class="card__desc">Глубоко увлажняют кожу лица, оставляя её мягкой и гладкой.</p>
+    </ul>
 
-        <div class="card__composition">
-          <h4 class="composition__title">Состав:</h4>
-          <ul class="composition__list">
-            <li>активные натуральные комплексы</li>
-            <li>витамины С, А, РР, В И Е</li>
-            <li>солнцезащитные компоненты</li>
-          </ul>
-        </div>
-
-        <div class="card__price-box">
+    <template id="catalog-template">
+      <li class="catalog-container">
+        <img class="catalog-image" src="" alt="Фото товар" /></img>
+        <p class="catalog-subtitle"></p>
+        <p class="catalog-name"></p>
+        <p class="catalog-description"></p>
+        <p class="catalog-composition">
+          <b class="composition__label">Состав:</b>
+        <ul class="composition__list"></ul>
+        </p>
+        <p class="catalog-price">
           <b class="price-box__label">Цена:</b>
-          <span class="price-box__value">2 750 &euro;</span>
-        </div>
-      </div>
+          <span class="price-box"></span>
+        </p>
+      </li>
+    </template>
+  </div>
 
-      <div class="card card_2">
-        <img src="images/moisturizing-mask.jpg" class="images-moisturizing-mask" alt="товар увлажняющий маска" />
-        <h3 class="card__subtitle">для нормальной кожи</h3>
-        <h2 class="card__title">Увлажняющая маска</h2>
-        <p class="card__desc">Способствует удерживанию влаги в верхних слоях кожи.</p>
+  <!--//3) Сверставаем данный footer, используя семантические теги footer, nav и т.д.-->
+  <footer class="footer">
+    <nav class="footer__nav">
+      <ul class="footer__list">
+        <li class="footer__item"><a href="#" class="footer__link">Главная</a></li>
+        <li class="footer__item"><a href="#" class="footer__link">Каталог</a></li>
+        <li class="footer__item"><a href="#" class="footer__link">Контакты</a></li>
+      </ul>
+    </nav>
+    <form class="email-form" id="email-form">
+      <label for="email">Подписаться на рассылку:</label>
+      <input placeholder="Введите ваш email" type="email" id="email" name="email" required />
+      <input placeholder="Введите ваш пароль" type="password" id="password" name="password" required />
+      <button type="submit">Подписаться</button>
+    </form>
+    <p class="footer__text">&copy; 2026 Beauty Products. Все права защищены.</p>
+  </footer>
 
-        <div class="card__composition">
-          <h4 class="composition__title">Состав:</h4>
-          <ul class="composition__list">
-            <li>воски</li>
-            <li>минералы</li>
-            <li>масла</li>
-          </ul>
-        </div>
+  <!--5) Создал кнопку "Регистрация" и модальное окно-->
+  <button id="openBtn" class="openBtn">Регистрация</button>
+  <div id="overlay" class="overlay">
+    <div id="registrationModal" class="modal">
+      <button id="closeBtn" class="close-x">&times;</button>
+      <h2>Регистрация</h2>
+      <form id="registrationForm">
+        <label for="username">Имя:</label>
+        <input placeholder="Введите ваше имя" type="text" id="username" name="username" required />
 
-        <div class="card__price-box">
-          <b class="price-box__label">Цена:</b>
-          <span class="price-box__value">3 500 &euro;</span>
-        </div>
-      </div>
+        <label for="fullname">Фамилия:</label>
+        <input placeholder="Введите вашу фамилию" type="text" id="fullname" name="fullname" required />
 
-      <div class="card card_3">
-        <img src="images/cleansing-gel.jpg" class="images-cleansing-gel" alt="товар Гель для умывания" />
-        <h3 class="card__subtitle">для нормальной кожи</h3>
-        <h2 class="card__title">Гель для умывания</h2>
-        <p class="card__desc">Интенсивно очищает, не повреждает защитный барьер кожи.</p>
+        <label for="birthdate">Дата рождения:</label>
+        <input placeholder="Введите вашу дату рождения" type="date" id="birthdate" name="birthdate" required />
 
-        <div class="card__composition">
-          <h4 class="composition__title">Состав:</h4>
-          <ul class="composition__list">
-            <li>минералы</li>
-            <li>витамины С, А, РР, В И Е</li>
-            <li>солнцезащитные компоненты</li>
-          </ul>
-        </div>
+        <label for="email">Email:</label>
+        <input placeholder="Введите ваш email" type="email" id="email" name="email" required />
 
-        <div class="card__price-box">
-          <b class="price-box__label">Цена:</b>
-          <span class="price-box__value">1 650 &euro;</span>
-        </div>
-      </div>
+        <label for="password">Пароль:</label>
+        <input placeholder="Введите ваш пароль" type="password" id="password" name="password" required />
 
+        <label for="confirmPassword">Подтвердите пароль:</label>
+        <input placeholder="Подтвердите пароль" type="password" id="confirmPassword" name="confirmPassword" required />
+        <span class="error-message" id="passwordError"></span>
 
-      <div class="card card_4">
-        <img src="images/gift-set-1.jpg" class="images-gift-set-1" alt="товар Подарочный набор №1" />
-        <h3 class="card__subtitle">для нормальной кожи</h3>
-        <h2 class="card__title">Подарочный набор №1</h2>
-        <p class="card__desc">Набор, состоящий из увлажняющего крема и маски.</p>
-
-        <div class="card__composition">
-          <h4 class="composition__title">Состав:</h4>
-          <ul class="composition__list">
-            <li>воски</li>
-            <li>минералы</li>
-            <li>масла</li>
-          </ul>
-        </div>
-
-        <div class="card__price-box">
-          <b class="price-box__label">Цена:</b>
-          <span class="price-box__value">4 750 &euro;</span>
-        </div>
-      </div>
-
-      <div class="card card_5">
-        <img src="images/gift-set-5.jpg" class="images-gift-set-5" alt="товар Подарочный набор №5" />
-        <h3 class="card__subtitle">для нормальной кожи</h3>
-        <h2 class="card__title">Подарочный набор №5</h2>
-        <p class="card__desc">Весь набор средств Invisible symphony, крем, маска, мусс и гель для умывания.</p>
-
-        <div class="card__composition">
-          <h4 class="composition__title">Состав:</h4>
-          <ul class="composition__list">
-            <li>воски</li>
-            <li>минералы</li>
-            <li>масла</li>
-          </ul>
-        </div>
-
-        <div class="card__price-box">
-          <b class="price-box__label">Цена:</b>
-          <span class="price-box__value">7 520 &euro;</span>
-        </div>
-      </div>
+        <button type="submit" class="submit-btn">Зарегистрироваться</button>
+      </form>
+      <div class="created-on" id="createdOn"></div>
     </div>
   </div>
 
-  <ul id="catalog-list"></ul>
-
-  <template id="catalog-template">
-    <li class="catalog-container">
-      <img class="catalog-image" src="" alt="Фото товар" /></img>
-      <p class="catalog-name"></p>
-      <p class="catalog-subtitle"></p>
-      <p class="catalog-description"></p>
-      <p class="catalog-composition">
-        Состав: <span class="composition__value"></span>
-      </p>
-      <p class="catalog-price">
-        Цена: <span class="price__value"></span>
-      </p>
-    </li>
-  </template>
 
   <script src="main.js"></script>
 
@@ -157,6 +105,8 @@
   <script type="module" src="homework-9.js"></script>
 
   <script type="module" src="homework-10.js"></script>
+
+  <script type="module" src="homework-11.js"></script>
 
 </body>
 

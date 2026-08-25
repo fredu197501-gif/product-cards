@@ -1,17 +1,15 @@
-const ALL_CARD_SELECTOR = ".card";
-const FIRST_CARD_SELECTOR = ".card_1";
+const ALL_CARD_SELECTOR = ".catalog-container";
+const FIRST_CARD_SELECTOR = ".catalog-container:nth-child(1)";
 
 const changeAllCardColorButton = document.querySelector("#change-all-card-color");
-const changeFirstCardColorButton = document.querySelector("#change-first-card-color");
-
 const greenColorHash = "#4CAF50";
-const blueColorHash = "#0000ff";
 
 const allCards = Array.from(document.querySelectorAll(ALL_CARD_SELECTOR));
 const firstCard = document.querySelector(FIRST_CARD_SELECTOR);
 
 if (changeAllCardColorButton) {
   changeAllCardColorButton.addEventListener("click", () => {
+    const allCards = Array.from(document.querySelectorAll(ALL_CARD_SELECTOR));
     allCards.forEach((card) => {
       if (card) {
         card.style.backgroundColor = greenColorHash;
@@ -20,9 +18,15 @@ if (changeAllCardColorButton) {
   });
 }
 
-if (changeFirstCardColorButton && firstCard) {
+const changeFirstCardColorButton = document.querySelector("#change-first-card-color");
+const blueColorHash = "#0000ff";
+
+if (changeFirstCardColorButton) {
   changeFirstCardColorButton.addEventListener("click", () => {
-    firstCard.style.backgroundColor = blueColorHash;
+    const firstCard = document.querySelector(FIRST_CARD_SELECTOR);
+    if (firstCard) {
+      firstCard.style.backgroundColor = blueColorHash;
+    }
   });
 }
 
@@ -51,7 +55,7 @@ function outputConsoleLog(message) {
   console.log(message);
 }
 
-const mainTitle = document.querySelector(".layout__title");
+const mainTitle = document.querySelector(".catalog-title");
 
 if (mainTitle) {
   mainTitle.addEventListener("mouseenter", () => {
