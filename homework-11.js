@@ -1,10 +1,5 @@
 //1) Создал файл.
-//3) Сверставаем данный footer, используя семантические теги footer, nav и т.д.
-const items = ['Главная', 'Каталог', 'Контакты'];
-const listContainer = document.getElementById("footer__list");
-
-listContainer.innerHTML = items.map(item => `<li>${item}</li>`).join('');
-
+//3) Сверставаем данный footer, используя семантические теги footer, nav и т.д.s
 //4) К form добавил логику, к email добавил валидацию, если он не заполнен - form не отправляется.
 // Выводим консоль лог в виде объекта: { email: 'введенная почта' }
 const form = document.querySelector('#email-form');

@@ -231,6 +231,14 @@ body {
   align-items: center;
 }
 
+/*3) Сверставаем данный footer, используя семантические теги footer, nav и т.д.*/
+.footer__nav {
+  display: grid;
+  justify-content: left;
+  gap: 10px;
+}
+
+
 /*4) Создал форму для ввода email*/
 .nav {
   display: flex;
