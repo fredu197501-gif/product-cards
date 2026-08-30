@@ -34,8 +34,8 @@ function renderCards(arrayToRender) {
     catalogClone.querySelector(".catalog-name").textContent = catalog.name;
     catalogClone.querySelector(".catalog-subtitle").textContent = catalog.subtitle;
     catalogClone.querySelector(".catalog-description").textContent = catalog.description;
-    catalogClone.querySelector(".catalog-composition .composition__value").textContent = catalog.composition.join(", ");
-    catalogClone.querySelector(".catalog-price").innerHTML = `Цена: ${catalog.price.toLocaleString("ru-RU")} ₽`;
+    catalogClone.querySelector(".composition__list").innerHTML = catalog.composition.map(item => `<li>${item}</li>`).join("");
+    catalogClone.querySelector(".catalog-price").innerHTML += '<b>' + catalog.price.toLocaleString("ru-RU") + ' ₽</b>';
     catalogList.appendChild(catalogClone);
   });
 }
