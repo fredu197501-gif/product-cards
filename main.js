@@ -1,73 +1,58 @@
-const ALL_CARD_SELECTOR = ".catalog-container";
-const FIRST_CARD_SELECTOR = ".catalog-container:nth-child(1)";
+// Дз №12 2) Все файлы импортируем в main.js.
+import "./homework-6.js";
+import "./homework-7.js";
+import "./homework-8.js";
+import "./homework-9.js";
+import "./homework-10.js";
+import { Modal } from "./modal.js";
+import { Form } from "./form.js";
+// 3) Создаем структуру и наследуемость класса.
+class Car {
+  constructor(brand, model, year, transmission, color) {
+    this.brand = brand;
+    this.model = model;
+    this.year = year;
+    this.transmission = transmission;
+    this.color = color;
+  }
 
-const changeAllCardColorButton = document.querySelector("#change-all-card-color");
-const greenColorHash = "#4CAF50";
-
-const allCards = Array.from(document.querySelectorAll(ALL_CARD_SELECTOR));
-const firstCard = document.querySelector(FIRST_CARD_SELECTOR);
-
-if (changeAllCardColorButton) {
-  changeAllCardColorButton.addEventListener("click", () => {
-    const allCards = Array.from(document.querySelectorAll(ALL_CARD_SELECTOR));
-    allCards.forEach((card) => {
-      if (card) {
-        card.style.backgroundColor = greenColorHash;
-      }
-    });
-  });
-}
-
-const changeFirstCardColorButton = document.querySelector("#change-first-card-color");
-const blueColorHash = "#0000ff";
-
-if (changeFirstCardColorButton) {
-  changeFirstCardColorButton.addEventListener("click", () => {
-    const firstCard = document.querySelector(FIRST_CARD_SELECTOR);
-    if (firstCard) {
-      firstCard.style.backgroundColor = blueColorHash;
-    }
-  });
-}
-
-const openGoogleButton = document.querySelector("#open-google");
-
-
-openGoogleButton.addEventListener("click", openGoogle);
-
-
-function openGoogle() {
-  const answer = confirm("Вы действительно хотите открыть Google?");
-
-  if (answer === true) {
-    window.open("https://google.com");
+  getInfo() {
+    return `${this.year} ${this.brand} ${this.model} ${this.transmission} ${this.color}`;
   }
 }
 
-const outputLogButton = document.querySelector("#output-console-log");
-
-if (outputLogButton) {
-  outputLogButton.addEventListener("click", () => outputConsoleLog("Дз №6"));
+class ElectricCar extends Car {
+  constructor(brand, model, year, transmission, color, batteryCapacity) {
+    super(brand, model, year, transmission, color);
+    this.batteryCapacity = batteryCapacity;
+  }
+  getInfo() {
+    return `${super.getInfo()} ${this.batteryCapacity} kWh`;
+  }
 }
 
-function outputConsoleLog(message) {
-  alert(message);
-  console.log(message);
-}
 
-const mainTitle = document.querySelector(".catalog-title");
+const Toyota = new Car("Toyota", "Camry", 2020, "Automatic", "Black");
+const Honda = new Car("Honda", "Civic", 2019, "Manual", "White");
+const Tesla = new ElectricCar("Tesla", "Model 3", 2021, "Automatic", "Red", 75);
+console.log(Toyota.getInfo());
+console.log(Honda.getInfo());
+console.log(Tesla.getInfo());
 
-if (mainTitle) {
-  mainTitle.addEventListener("mouseenter", () => {
-    console.log(mainTitle.textContent);
-  });
-}
+// 4)создаеи класс для модального окна под названием Modal.
+document.addEventListener("DOMContentLoaded", () => {
+  const modalWindow = new Modal('registrationModal');
+  const openBtn = document.getElementById('openBtn');
+  if (openBtn) {
+    openBtn.addEventListener('click', () => {
+      console.log('Открываем модальное окно');
+      modalWindow.open();
+    });
+  }
 
-const toggleButton = document.querySelector("#toggle-color-button");
 
-if (toggleButton) {
-  toggleButton.addEventListener("click", () => {
-    toggleButton.classList.toggle("active");
-  });
-}
-
+  const closeBtn = document.getElementById('closeBtn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => modalWindow.close());
+  }
+})
